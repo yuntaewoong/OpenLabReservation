@@ -6,7 +6,7 @@
 Flutter
 
 # Backend
-Nodejs + MySQL
+Nodejs + SQLITE
 
 
 
