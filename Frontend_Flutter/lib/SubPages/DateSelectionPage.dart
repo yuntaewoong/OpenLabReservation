@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'TimeSelectionPage.dart';
+import 'package:flutter/material.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class DateSelectionPage extends StatelessWidget {
   const DateSelectionPage({Key? key}) : super(key: key);
@@ -34,6 +36,11 @@ class DateSelectionPage extends StatelessWidget {
                         fontSize : 80.0
                     )
                 ),
+              ),
+              TableCalendar(
+                firstDay: DateTime.utc(2021, 10, 16),
+                lastDay: DateTime.utc(2030, 3, 14),
+                focusedDay: DateTime.now(),
               )
             ],
           ),
