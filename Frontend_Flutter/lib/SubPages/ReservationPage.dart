@@ -34,10 +34,11 @@ class ReservationPage extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: (){// 버튼 클릭시 실행되는 함수
-                  Navigator.push(
+                  Navigator.pop(context);
+                  /*Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => const TimeSelectionPage())//날짜 선택 페이지로
-                  );
+                  );*/
                 },
                 child: Text('돌아가기'),
                 //ElevatedButton 은 backgroundColor 속성이 없다.
