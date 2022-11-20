@@ -61,3 +61,31 @@ app.post("/",(req,res) =>{
     console.log(reservationData.month + "월" + reservationData.date + "일" + reservationData.time + "시 예약완료");
     res.send(true);
 });
+
+
+/*
+GET으로 월/일/시간에 해당하는 예약정보 JSON으로 가져오기,
+이 GET은 해당 월/일/시간에 이미 예약정보가 있을때만 호출할것(GET(/:month/:date/:time)이용)
+*/
+app.get("/info/:month/:date/:time",(req,res) =>{
+    let param = req.params;
+    let findQuery = "SELECT * FROM RESERVATION WHERE MONTH = ? AND DATE = ? AND TIME = ?";
+    db.get(findQuery,param.month,param.date,param.time,(err,row)=>{
+            if(!row)//에러처리
+                console.log("먼저 해당 예약내역이 있는지 조회해야합니다");
+            res.send(//예약내역 JSON으로 전송
+                {
+                    "month" : row.MONTH,
+                    "date" : row.DATE,
+                    "time" : row.TIME,
+                    "name" : row.NAME,
+                    "id" : row.ID,
+                    "phoneNumber" : row.PHONENUMBER,
+                    "purpose" : row.PURPOSE,
+                    "major" : row.MAJOR,
+                    "password" : row.PASSWORD
+                }
+            );
+        }
+    );
+});
