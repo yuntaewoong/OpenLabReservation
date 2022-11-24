@@ -61,3 +61,4 @@ class InformationPage extends StatelessWidget {
     );
   }
 }
+

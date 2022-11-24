@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
 
@@ -58,4 +59,30 @@ class MainPage extends StatelessWidget {
         )
     );
   }
+}
+
+Widget build(BuildContext context) {
+  return MaterialApp(
+    title: 'Welcome to Flutter',
+    home: Container( //컨테이너로 감싼다.
+      decoration: BoxDecoration( //decoration 을 준다.
+          image: DecorationImage(
+              image: AssetImage("C:\Users\82108\Downloads\University_Seal_01_JPG_2021"), fit: BoxFit.cover)),
+      child: Scaffold(
+        backgroundColor: Colors.transparent, //스캐폴드에 백그라운드를 투명하게 한다.
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          title: Text('My App'),
+          centerTitle: true,
+          leading: IconButton(
+              icon: Icon(
+                Icons.list,
+                color: Colors.white,
+              ),
+              onPressed: () {}),
+        ),
+      ),
+    ),
+  );
 }
