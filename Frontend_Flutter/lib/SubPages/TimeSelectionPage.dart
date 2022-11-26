@@ -44,7 +44,7 @@ class TimeSelectionPage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const ReservationPage())
+                              builder: (context) => ReservationPage(7,3,i))
                       ); // MaterialPageRoute
                     }
                     else;
@@ -55,7 +55,7 @@ class TimeSelectionPage extends StatelessWidget {
 
         for (int i=10; i < 24; i++)
           FutureBuilder(
-              future: FetchReservation(7,8,i),//7월8일정보, 이 데이터는 다른 페이지에서 받아올것
+              future: FetchReservation(7,3,i),//7월3일정보, 이 데이터는 다른 페이지에서 받아올것
               builder: (context,snap){
                 if(!snap.hasData) return const CircularProgressIndicator();//아직 데이터가 안오면 빙글빙글 아이콘이 뜸
                 return ListTile(
@@ -67,7 +67,7 @@ class TimeSelectionPage extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const ReservationPage())
+                                builder: (context) => ReservationPage(7,3,i))
                         ); // MaterialPageRoute
                       }
                     } // onTaP
