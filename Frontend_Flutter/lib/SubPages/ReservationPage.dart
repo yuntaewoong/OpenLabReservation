@@ -7,9 +7,6 @@ import 'package:http/http.dart' as http;
 
 class ReservationData
 {
-  int month = 0;//예약 월
-  int date = 0;//예약 일
-  int time = 0;//예약 시간
   String name = "";//이름
   int id = 0;//학번
   int phoneNumber = 0;//전화번호
@@ -23,7 +20,11 @@ ReservationData RESERVATION_DATA = ReservationData();
 
 
 class ReservationPage extends StatelessWidget {
-  const ReservationPage({Key? key}) : super(key: key);
+  ReservationPage(this.month,this.date,this.time);
+  int month= 0;
+  int date = 0;
+  int time = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -158,9 +159,9 @@ class ReservationPage extends StatelessWidget {
               ElevatedButton(
                 onPressed: () async {
                   var data = {
-                    "month" : 7,
-                    "date" : 3,
-                    "time" : 15,
+                    "month" : this.month,
+                    "date" : this.date,
+                    "time" : this.time,
                     "name" : RESERVATION_DATA.name,
                     "id" : RESERVATION_DATA.id,
                     "phoneNumber" : RESERVATION_DATA.phoneNumber,
