@@ -61,7 +61,26 @@ app.post("/",(req,res) =>{
     console.log(reservationData.month + "월" + reservationData.date + "일" + reservationData.time + "시 예약완료");
     res.send(true);
 });
-
+/*
+플러터 클라이언트에서 NODEJS서버로 POST예약삭제 처리
+예약삭제 JSON데이터는 req.body로 접근한다.
+클라에서는 항상 해당 예약이 유효한 예약인지(같은달,같은날,같은시간에 이미 예약이 있는지)확인하고 POST할것
+*/
+app.post("/delete",(req,res) =>{
+    let deleteData = req.body;
+    let deleteQuery = "DELETE FROM RESERVATION WHERE MONTH=? AND DATE=? AND TIME=?";
+    db.run(
+        deleteQuery,
+        deleteData.month,
+        deleteData.date,
+        deleteData.time,
+        function (err) {
+            //console.log(err);//에러내용보고싶으면 주석해제 ㄱ
+        }
+    );
+    console.log(deleteData.month + "월" + deleteData.date + "일" + deleteData.time + "시 예약파기");
+    res.send(true);
+});
 
 /*
 GET으로 월/일/시간에 해당하는 예약정보 JSON으로 가져오기,
