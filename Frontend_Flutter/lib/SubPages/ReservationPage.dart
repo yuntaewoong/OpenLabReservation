@@ -2,10 +2,28 @@
 import 'package:flutter/material.dart';
 import 'TimeSelectionPage.dart';
 import 'DateSelectionPage.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
+class ReservationData
+{
+  int month = 0;//예약 월
+  int date = 0;//예약 일
+  int time = 0;//예약 시간
+  String name = "";//이름
+  int id = 0;//학번
+  int phoneNumber = 0;//전화번호
+  String purpose = "";//예약목적
+  String major = "";//전공
+  int password = 0;//비밀번호
+}
+
+
+ReservationData RESERVATION_DATA = ReservationData();
+
 
 class ReservationPage extends StatelessWidget {
   const ReservationPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,12 +42,15 @@ class ReservationPage extends StatelessWidget {
                  fontSize: 15.0
                ),
             ),
-            const TextField(
-              decoration: InputDecoration(
+            TextField(
+              onChanged: (text) {
+                RESERVATION_DATA.name = text;
+              },
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: "홍길동",
               ),
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             ),
             const SizedBox(height: 10.0,),
             const Text("학번",
@@ -37,12 +58,15 @@ class ReservationPage extends StatelessWidget {
                   fontSize: 15.0
               ),
             ),
-            const TextField(
-              decoration: InputDecoration(
+            TextField(
+              onChanged: (text) {
+                RESERVATION_DATA.id = int.parse(text);
+              },
+              decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "2022000000"
                 ),
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             ),
             const SizedBox(height: 10.0,),
             const Text("연락처",
@@ -50,12 +74,15 @@ class ReservationPage extends StatelessWidget {
                   fontSize: 15.0
               ),
             ),
-            const TextField(
-              decoration: InputDecoration(
+            TextField(
+              onChanged: (text) {
+                RESERVATION_DATA.phoneNumber = int.parse(text);
+              },
+              decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "01012345678",
                 ),
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             ),
             const SizedBox(height: 10.0,),
             const Text("대여 목적",
@@ -63,12 +90,15 @@ class ReservationPage extends StatelessWidget {
                   fontSize: 15.0
               ),
             ),
-            const TextField(
-              decoration: InputDecoration(
+            TextField(
+              onChanged: (text) {
+                RESERVATION_DATA.purpose = text;
+              },
+              decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "ex) 조별과제 스터디, 세미나, 랩 미팅",
               ),
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
               maxLines: 5,
             ),
             /*DropdownButton(
@@ -94,12 +124,15 @@ class ReservationPage extends StatelessWidget {
                   fontSize: 15.0
               ),
             ),
-            const TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: "ex) 유전생명공학과, 작물시스템유전학실험실",
-                ),
-                style: TextStyle(fontSize: 20),
+            TextField(
+              onChanged: (text) {
+                RESERVATION_DATA.major = text;
+              },
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "ex) 유전생명공학과, 작물시스템유전학실험실",
+              ),
+              style: const TextStyle(fontSize: 20),
             ),
             const SizedBox(height: 10.0,),
             const Text("비밀번호",
@@ -107,20 +140,39 @@ class ReservationPage extends StatelessWidget {
                   fontSize: 15.0
               ),
             ),
-            const TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  //hintText: "비밀번호",
-                ),
-                style: TextStyle(fontSize: 20),
+            TextField(
+              onChanged: (text) {
+                RESERVATION_DATA.password = int.parse(text);
+              },
+              obscureText: true,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                //hintText: "비밀번호",
+              ),
+              style: const TextStyle(fontSize: 20),
             ),
             const SizedBox(height: 40.0,),
             Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly, // 같은 간격만큼 공간을 둠
             children: [
               ElevatedButton(
-                onPressed: (){// 버튼 클릭시 실행되는 함수
+                onPressed: () async {
+                  var data = {
+                    "month" : 7,
+                    "date" : 3,
+                    "time" : 13,
+                    "name" : RESERVATION_DATA.name,
+                    "id" : RESERVATION_DATA.id,
+                    "phoneNumber" : RESERVATION_DATA.phoneNumber,
+                    "purpose" : RESERVATION_DATA.purpose,
+                    "major" : RESERVATION_DATA.major,
+                    "password" : RESERVATION_DATA.password
+                  };
+                  var body = json.encode(data);
+                  http.Response res = await http.post(Uri.parse("http://10.0.2.2:3000/"),
+                      headers: {"Content-Type": "application/json"},
+                      body: body
+                  );
                 },
                 child: Text('예약하기'),
                 //ElevatedButton 은 backgroundColor 속성이 없다.
