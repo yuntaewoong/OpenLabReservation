@@ -160,7 +160,7 @@ class ReservationPage extends StatelessWidget {
                   var data = {
                     "month" : 7,
                     "date" : 3,
-                    "time" : 13,
+                    "time" : 15,
                     "name" : RESERVATION_DATA.name,
                     "id" : RESERVATION_DATA.id,
                     "phoneNumber" : RESERVATION_DATA.phoneNumber,
@@ -173,7 +173,12 @@ class ReservationPage extends StatelessWidget {
                       headers: {"Content-Type": "application/json"},
                       body: body
                   );
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const DateSelectionPage())
+                  );//날짜 선택 페이지로
                 },
+
                 child: Text('예약하기'),
                 //ElevatedButton 은 backgroundColor 속성이 없다.
                 //ElevatedButton 에서는 primary 속성이 배경색을 담당한다.
