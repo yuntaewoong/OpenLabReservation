@@ -29,6 +29,7 @@ Map data = {
 };
 
 String name = data["name"];
+String s_name = name.replaceAll(RegExp(r'.(?=.{1})'),'*');
 
 
 class CancelPage extends StatelessWidget {
@@ -58,7 +59,7 @@ class CancelPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10.0,),
-                  Text(data["name"],
+                  Text(data["name"].replaceRange(1, 2, '*' * 1),
                     style: const TextStyle(
                       fontSize: 20,
                     ),
@@ -71,7 +72,7 @@ class CancelPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10.0,),
-                  Text(data["id"],
+                  Text(data["id"].replaceRange(4, 8, '*' * 4),
                     style: const TextStyle(
                         fontSize: 20),
                   ),
@@ -82,21 +83,21 @@ class CancelPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10.0,),
-                  Text(data["phoneNumber"],
+                  Text(data["phoneNumber"].replaceRange(3, 7, '*' * 4),
                     style: const TextStyle(fontSize: 20),
                   ),
                   const SizedBox(height: 20.0,),
-                  const Text("대여 목적",
+                  /*const Text("대여 목적",
                     style: TextStyle(
                         fontSize: 15.0
                     ),
                   ),
                   const SizedBox(height: 10.0,),
-                  Text(data["purpose"],
-                    style: const TextStyle(fontSize: 20),
+                  const Text("**************",
+                    style: TextStyle(fontSize: 20),
                     maxLines: 5,
                   ),
-                  const SizedBox(height: 20.0,),
+                  const SizedBox(height: 20.0,),*/
                   const Text("소속",
                     style: TextStyle(
                         fontSize: 15.0
@@ -165,7 +166,7 @@ class CancelPage extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(10.0)
                               ),
                               elevation: 0.0,
-                              minimumSize: Size(200, 50),
+                              minimumSize: const Size(200, 50),
                               textStyle: const TextStyle(
                                   fontSize: 40.0
                               )
