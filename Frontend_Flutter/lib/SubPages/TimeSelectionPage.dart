@@ -24,7 +24,8 @@ class TimeSelectionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("선택한 날짜 여기에 표시"),
+        title: const Text("선택한 날짜 여기에 표시",
+            style: TextStyle(fontSize: 25.0)),
         actions: <Widget>[]
       ),
       body: ListView(

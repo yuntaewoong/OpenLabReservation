@@ -42,7 +42,8 @@ class CancelPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Text("예약 정보 보기")
+            title: const Text("예약 확인",
+                style: TextStyle(fontSize: 25.0))
         ),
         body: SingleChildScrollView(
             scrollDirection: Axis.vertical,
@@ -50,85 +51,76 @@ class CancelPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 10.0,),
+                  const SizedBox(height: 20.0,),
                   const Text("이름",
                     style: TextStyle(
                         fontSize: 15.0
                     ),
                   ),
+                  const SizedBox(height: 10.0,),
                   Text(data["name"],
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 20,
                     ),
 
                   ),
-                  /*
-                  const SizedBox(height: 10.0,),
+                  const SizedBox(height: 20.0,),
                   const Text("학번",
                     style: TextStyle(
                         fontSize: 15.0
                     ),
                   ),
-                  TextField(
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                    ),
-                    style: const TextStyle(fontSize: 20),
-                  ),
                   const SizedBox(height: 10.0,),
+                  Text(data["id"],
+                    style: const TextStyle(
+                        fontSize: 20),
+                  ),
+                  const SizedBox(height: 20.0,),
                   const Text("연락처",
                     style: TextStyle(
                         fontSize: 15.0
                     ),
                   ),
-                  TextField(
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                    ),
+                  const SizedBox(height: 10.0,),
+                  Text(data["phoneNumber"],
                     style: const TextStyle(fontSize: 20),
                   ),
-                  const SizedBox(height: 10.0,),
+                  const SizedBox(height: 20.0,),
                   const Text("대여 목적",
                     style: TextStyle(
                         fontSize: 15.0
                     ),
                   ),
-                  TextField(
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: "ex) 조별과제 스터디, 세미나, 랩 미팅",
-                    ),
+                  const SizedBox(height: 10.0,),
+                  Text(data["purpose"],
                     style: const TextStyle(fontSize: 20),
                     maxLines: 5,
                   ),
-                  const SizedBox(height: 10.0,),
+                  const SizedBox(height: 20.0,),
                   const Text("소속",
                     style: TextStyle(
                         fontSize: 15.0
                     ),
                   ),
-                  TextField(
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                    ),
+                  const SizedBox(height: 10.0,),
+                  Text(data["major"],
                     style: const TextStyle(fontSize: 20),
                   ),
-                  const SizedBox(height: 10.0,),
+                  const SizedBox(height: 20.0,),
                   const Text("비밀번호",
                     style: TextStyle(
                         fontSize: 15.0
                     ),
                   ),
-                  TextField(
+                  const TextField(
                     obscureText: true,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       //hintText: "비밀번호",
                     ),
-                    style: const TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 20),
                   ),
                   const SizedBox(height: 40.0,),
-                  */
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // 같은 간격만큼 공간을 둠

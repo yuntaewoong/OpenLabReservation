@@ -29,7 +29,8 @@ class ReservationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("예약 정보 입력")
+        title: Text("예약 정보 입력",
+            style: TextStyle(fontSize: 25.0))
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
