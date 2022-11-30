@@ -153,7 +153,7 @@ class ReservationPage extends StatelessWidget {
               ),
               style: const TextStyle(fontSize: 20),
             ),
-            const SizedBox(height: 40.0,),
+            const SizedBox(height: 35.0,),
             Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly, // 같은 간격만큼 공간을 둠
             children: [

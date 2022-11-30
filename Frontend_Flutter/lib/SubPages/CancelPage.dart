@@ -121,7 +121,7 @@ class CancelPage extends StatelessWidget {
                     ),
                     style: TextStyle(fontSize: 20),
                   ),
-                  const SizedBox(height: 40.0,),
+                  const SizedBox(height: 290.0,),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // 같은 간격만큼 공간을 둠
