@@ -51,6 +51,12 @@ class MainPage extends StatelessWidget {
                       fontSize : 80.0
                     )
                 ),
+              ),
+              const Image(
+                image: AssetImage("assets/KyungHee.jpg"),
+                fit: BoxFit.cover,
+                color: Colors.white,
+                colorBlendMode: BlendMode.darken,
               )
             ],
           ),
