@@ -39,7 +39,7 @@ class ReservationPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 10.0,),
-            const Text("이름",
+            const Text("이름 (name)",
                style: TextStyle(
                  fontSize: 25.0
                ),
@@ -55,7 +55,7 @@ class ReservationPage extends StatelessWidget {
               style: const TextStyle(fontSize: 20.0),
             ),
             const SizedBox(height: 10.0,),
-            const Text("학번",
+            const Text("학번 (Student ID)",
               style: TextStyle(
                   fontSize: 25.0
               ),
@@ -71,7 +71,7 @@ class ReservationPage extends StatelessWidget {
               style: const TextStyle(fontSize: 20.0),
             ),
             const SizedBox(height: 10.0,),
-            const Text("연락처",
+            const Text("연락처 (Phone Number)",
               style: TextStyle(
                   fontSize: 25.0
               ),
@@ -87,7 +87,7 @@ class ReservationPage extends StatelessWidget {
               style: const TextStyle(fontSize: 20.0),
             ),
             const SizedBox(height: 10.0,),
-            const Text("대여 목적",
+            const Text("대여 목적 (Usage Purpose)",
               style: TextStyle(
                   fontSize: 25.0
               ),
@@ -102,7 +102,7 @@ class ReservationPage extends StatelessWidget {
               maxLines: 5
             ),
             const SizedBox(height: 10.0,),
-            const Text("소속",
+            const Text("소속 (major)",
               style: TextStyle(fontSize: 25.0),
               maxLines: 5,
             ),
@@ -118,7 +118,7 @@ class ReservationPage extends StatelessWidget {
               maxLines: 2,
             ),
             const SizedBox(height: 10.0,),
-            const Text("비밀번호",
+            const Text("비밀번호 (Password)",
               style: TextStyle(
                   fontSize: 25.0
               ),
