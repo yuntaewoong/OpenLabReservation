@@ -30,7 +30,7 @@ class CancelPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
             title: const Text("예약 확인",
-                style: TextStyle(fontSize: 25.0))
+                style: TextStyle(fontSize: 35.0))
         ),
 
         body: SingleChildScrollView(
@@ -47,62 +47,51 @@ class CancelPage extends StatelessWidget {
                         const SizedBox(height: 20.0,),
                         const Text("이름",
                           style: TextStyle(
-                              fontSize: 15.0
+                              fontSize: 25.0
                           ),
                         ),
-                        const SizedBox(height: 10.0,),
+                        const SizedBox(height: 20.0,),
                         Text(snap.data["name"].replaceRange(1, 2, '*' * 1),
                           style: const TextStyle(
-                            fontSize: 20,
+                            fontSize: 20.0,
                           ),
 
                         ),
                         const SizedBox(height: 20.0,),
                         const Text("학번",
                           style: TextStyle(
-                              fontSize: 15.0
+                              fontSize: 25.0
                           ),
                         ),
-                        const SizedBox(height: 10.0,),
+                        const SizedBox(height: 20.0,),
                         Text(snap.data["id"].toString().replaceRange(4, 8, '*' * 4),
                           style: const TextStyle(
-                              fontSize: 20),
+                              fontSize: 20.0),
                         ),
                         const SizedBox(height: 20.0,),
                         const Text("연락처",
                           style: TextStyle(
-                              fontSize: 15.0
+                              fontSize: 25.0
                           ),
                         ),
-                        const SizedBox(height: 10.0,),
+                        const SizedBox(height: 20.0,),
                         Text("0" + snap.data["phoneNumber"].toString().replaceRange(3, 7, '*' * 4),
                           style: const TextStyle(fontSize: 20),
                         ),
                         const SizedBox(height: 20.0,),
-                        /*const Text("대여 목적",
-                        style: TextStyle(
-                            fontSize: 15.0
-                        ),
-                      ),
-                      const SizedBox(height: 10.0,),
-                      const Text("**************",
-                        style: TextStyle(fontSize: 20),
-                        maxLines: 5,
-                      ),
-                      const SizedBox(height: 20.0,),*/
                         const Text("소속",
                           style: TextStyle(
-                              fontSize: 15.0
+                              fontSize: 25.0
                           ),
                         ),
-                        const SizedBox(height: 10.0,),
+                        const SizedBox(height: 20.0,),
                         Text(snap.data["major"],
                           style: const TextStyle(fontSize: 20),
                         ),
-                        const SizedBox(height: 20.0,),
+                        const SizedBox(height: 25.0,),
                         const Text("비밀번호",
                           style: TextStyle(
-                              fontSize: 15.0
+                              fontSize: 20.0
                           ),
                         ),
                         TextField(
