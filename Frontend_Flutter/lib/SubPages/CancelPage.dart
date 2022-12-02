@@ -5,7 +5,7 @@ import 'DateSelectionPage.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-
+int password  =0;
 
 class CancelPage extends StatelessWidget {
   CancelPage(this.month, this.date, this.time);
@@ -105,13 +105,16 @@ class CancelPage extends StatelessWidget {
                               fontSize: 15.0
                           ),
                         ),
-                        const TextField(
+                        TextField(
+                          onChanged: (text) {
+                            password = int.parse(text);
+                          },
                           obscureText: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             //hintText: "비밀번호",
                           ),
-                          style: TextStyle(fontSize: 20),
+                          style: const TextStyle(fontSize: 20),
                         ),
                         const SizedBox(height: 290.0,),
                         Row(
@@ -119,15 +122,29 @@ class CancelPage extends StatelessWidget {
                             // 같은 간격만큼 공간을 둠
                             children: [
                               ElevatedButton(
-                                onPressed: () {
-                                  //예약 취소 정보를 서버에 전송할 코드가 여기에 필요
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(builder: (
-                                          context) => const DateSelectionPage())
-                                  ); //날짜 선택 페이지로 돌아감
+                                onPressed: () async {
+                                    if(password == snap.data["password"]) {
+                                      var data = {
+                                        "month": this.month,
+                                        "date": this.date,
+                                        "time": this.time
+                                      };
+                                      var body = json.encode(data);
+                                      http.Response res = await http.post(
+                                          Uri.parse(
+                                              "http://10.0.2.2:3000/delete"),
+                                          headers: {
+                                            "Content-Type": "application/json"
+                                          },
+                                          body: body
+                                      );
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (
+                                              context) => const DateSelectionPage())
+                                      );
+                                    }//
                                 },
-
                                 child: Text('예약취소'),
                                 //ElevatedButton 은 backgroundColor 속성이 없다.
                                 //ElevatedButton 에서는 primary 속성이 배경색을 담당한다.
