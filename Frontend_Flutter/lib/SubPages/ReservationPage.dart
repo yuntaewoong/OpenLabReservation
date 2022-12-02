@@ -140,6 +140,7 @@ class ReservationPage extends StatelessWidget {
             children: [
               ElevatedButton(
                 onPressed: () async {
+
                   var data = {
                     "month" : this.month,
                     "date" : this.date,
@@ -156,10 +157,27 @@ class ReservationPage extends StatelessWidget {
                       headers: {"Content-Type": "application/json"},
                       body: body
                   );
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const DateSelectionPage())
-                  );//날짜 선택 페이지로
+                  showDialog(
+                      context: context,
+                      barrierDismissible: true, // 바깥 영역 터치시 닫을지 여부
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          content: Text("예약되었습니다."),
+                          insetPadding: const  EdgeInsets.fromLTRB(0,80,0, 80),
+                          actions: [
+                            TextButton(
+                              child: const Text('확인'),
+                              onPressed: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context)
+                                    => const DateSelectionPage()));//날짜 선택 페이지로
+                              },
+                            ),
+                          ],
+                        );
+                      }
+                  );
+
                 },
 
                 child: Text('예약하기'),

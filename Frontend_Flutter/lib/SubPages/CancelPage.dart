@@ -112,6 +112,7 @@ class CancelPage extends StatelessWidget {
                             children: [
                               ElevatedButton(
                                 onPressed: () async {
+
                                     if(password == snap.data["password"]) {
                                       var data = {
                                         "month": this.month,
@@ -127,11 +128,28 @@ class CancelPage extends StatelessWidget {
                                           },
                                           body: body
                                       );
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (
-                                              context) => const DateSelectionPage())
+                                      showDialog(
+                                          context: context,
+                                          barrierDismissible: true, // 바깥 영역 터치시 닫을지 여부
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              content: Text("예약이 취소되었습니다."),
+                                              insetPadding: const  EdgeInsets.fromLTRB(0,80,0, 80),
+                                              actions: [
+                                                TextButton(
+                                                  child: const Text('확인'),
+                                                  onPressed: () {
+                                                    Navigator.push(context,
+                                                        MaterialPageRoute(builder: (context) =>
+                                                        const DateSelectionPage())
+                                                    );
+                                                  },
+                                                ),
+                                              ],
+                                            );
+                                          }
                                       );
+
                                     }//
                                 },
                                 child: Text('예약취소'),
