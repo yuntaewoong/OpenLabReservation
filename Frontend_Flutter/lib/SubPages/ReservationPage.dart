@@ -29,7 +29,8 @@ class ReservationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("예약 정보 입력")
+        title: Text("예약 정보 입력",
+            style: TextStyle(fontSize: 25.0))
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -152,7 +153,7 @@ class ReservationPage extends StatelessWidget {
               ),
               style: const TextStyle(fontSize: 20),
             ),
-            const SizedBox(height: 40.0,),
+            const SizedBox(height: 35.0,),
             Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly, // 같은 간격만큼 공간을 둠
             children: [

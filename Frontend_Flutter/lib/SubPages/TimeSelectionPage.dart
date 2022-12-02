@@ -3,6 +3,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'ReservationPage.dart';
+import 'CancelPage.dart';
 import 'InformationPage.dart';
 import 'DateSelectionPage.dart';
 import 'package:http/http.dart' as http;
@@ -23,7 +24,8 @@ class TimeSelectionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("선택한 날짜 여기에 표시"),
+        title: const Text("선택한 날짜 여기에 표시",
+            style: TextStyle(fontSize: 25.0)),
         actions: <Widget>[]
       ),
       body: ListView(
@@ -44,10 +46,18 @@ class TimeSelectionPage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ReservationPage(7,3,i))
+                              builder: (context) => ReservationPage(7,3,i)
+                          )
                       ); // MaterialPageRoute
                     }
-                    else;
+                    else {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CancelPage(7,3,i)
+                        )
+                      );
+                    }
                   } // onTap
               );
             }
@@ -70,6 +80,12 @@ class TimeSelectionPage extends StatelessWidget {
                                 builder: (context) => ReservationPage(7,3,i))
                         ); // MaterialPageRoute
                       }
+                      else {
+                        Navigator.push(
+                            context,
+                          MaterialPageRoute(builder: (context) => CancelPage(7,3,i))
+                        );
+                      };
                     } // onTaP
                 );
               }
