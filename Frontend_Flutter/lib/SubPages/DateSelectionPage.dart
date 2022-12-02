@@ -42,14 +42,11 @@ Widget build(BuildContext context) {
               firstDay: DateTime.utc(2021, 10, 16),
               lastDay: DateTime.utc(2030, 3, 14),
               focusedDay: DateTime.now(),
-              selectedDayPredicate: (day) {
-                return isSameDay(_selectedDay, day);
-              },
               onDaySelected: (selectedDay, focusedDay) {
-                setState(() {
-                  _selectedDay = selectedDay;
-                  _focusedDay = focusedDay; // update `_focusedDay` here as well
-                });
+                //setState(() {
+                //  _selectedDay = selectedDay;
+                //  _focusedDay = focusedDay; // update `_focusedDay` here as well
+                //});
               },
             )
           ],

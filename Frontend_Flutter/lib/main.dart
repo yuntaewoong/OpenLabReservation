@@ -19,24 +19,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-  Widget build(BuildContext context) {
-   return Scaffold(
-     backgroundColor: Colors.black,
-     body: Stack(
-       fit: StackFit.expand,
-       children: <Widget>[
-        Image(
-          image: AssetImage("assets/대학휘장01.jpg"),
-          fit: BoxFit.cover,
-          color: Colors.black87,
-          colorBlendMode: BlendMode.darken,
-        )
-      ],
-    ),
-  );
-}
-
-
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
 
