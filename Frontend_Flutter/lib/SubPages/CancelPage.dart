@@ -30,7 +30,7 @@ class CancelPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
             title: const Text("예약 확인",
-                style: TextStyle(fontSize: 25.0))
+                style: TextStyle(fontSize: 35.0))
         ),
 
         body: SingleChildScrollView(
@@ -45,64 +45,53 @@ class CancelPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const SizedBox(height: 20.0,),
-                        const Text("이름",
+                        const Text("이름 (Name)",
                           style: TextStyle(
-                              fontSize: 15.0
+                              fontSize: 25.0
                           ),
                         ),
-                        const SizedBox(height: 10.0,),
+                        const SizedBox(height: 20.0,),
                         Text(snap.data["name"].replaceRange(1, 2, '*' * 1),
                           style: const TextStyle(
-                            fontSize: 20,
+                            fontSize: 20.0,
                           ),
 
                         ),
                         const SizedBox(height: 20.0,),
-                        const Text("학번",
+                        const Text("학번 (Student ID)",
                           style: TextStyle(
-                              fontSize: 15.0
+                              fontSize: 25.0
                           ),
-                        ),
-                        const SizedBox(height: 10.0,),
-                        Text(snap.data["id"].toString().replaceRange(4, 8, '*' * 4),
-                          style: const TextStyle(
-                              fontSize: 20),
                         ),
                         const SizedBox(height: 20.0,),
-                        const Text("연락처",
+                        Text(snap.data["id"].toString().replaceRange(4, 8, '*' * 4),
+                          style: const TextStyle(
+                              fontSize: 20.0),
+                        ),
+                        const SizedBox(height: 20.0,),
+                        const Text("연락처 (Phone Number)",
                           style: TextStyle(
-                              fontSize: 15.0
+                              fontSize: 25.0
                           ),
                         ),
-                        const SizedBox(height: 10.0,),
+                        const SizedBox(height: 20.0,),
                         Text("0" + snap.data["phoneNumber"].toString().replaceRange(3, 7, '*' * 4),
                           style: const TextStyle(fontSize: 20),
                         ),
                         const SizedBox(height: 20.0,),
-                        /*const Text("대여 목적",
-                        style: TextStyle(
-                            fontSize: 15.0
-                        ),
-                      ),
-                      const SizedBox(height: 10.0,),
-                      const Text("**************",
-                        style: TextStyle(fontSize: 20),
-                        maxLines: 5,
-                      ),
-                      const SizedBox(height: 20.0,),*/
-                        const Text("소속",
+                        const Text("소속 (Major)",
                           style: TextStyle(
-                              fontSize: 15.0
+                              fontSize: 25.0
                           ),
                         ),
-                        const SizedBox(height: 10.0,),
+                        const SizedBox(height: 20.0,),
                         Text(snap.data["major"],
                           style: const TextStyle(fontSize: 20),
                         ),
-                        const SizedBox(height: 20.0,),
-                        const Text("비밀번호",
+                        const SizedBox(height: 25.0,),
+                        const Text("비밀번호 (Password)",
                           style: TextStyle(
-                              fontSize: 15.0
+                              fontSize: 20.0
                           ),
                         ),
                         TextField(
@@ -116,13 +105,14 @@ class CancelPage extends StatelessWidget {
                           ),
                           style: const TextStyle(fontSize: 20),
                         ),
-                        const SizedBox(height: 290.0,),
+                        const SizedBox(height: 20.0,),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             // 같은 간격만큼 공간을 둠
                             children: [
                               ElevatedButton(
                                 onPressed: () async {
+
                                     if(password == snap.data["password"]) {
                                       var data = {
                                         "month": this.month,
@@ -138,11 +128,28 @@ class CancelPage extends StatelessWidget {
                                           },
                                           body: body
                                       );
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (
-                                              context) => const DateSelectionPage())
+                                      showDialog(
+                                          context: context,
+                                          barrierDismissible: true, // 바깥 영역 터치시 닫을지 여부
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              content: Text("예약이 취소되었습니다."),
+                                              insetPadding: const  EdgeInsets.fromLTRB(0,80,0, 80),
+                                              actions: [
+                                                TextButton(
+                                                  child: const Text('확인'),
+                                                  onPressed: () {
+                                                    Navigator.push(context,
+                                                        MaterialPageRoute(builder: (context) =>
+                                                        const DateSelectionPage())
+                                                    );
+                                                  },
+                                                ),
+                                              ],
+                                            );
+                                          }
                                       );
+
                                     }//
                                 },
                                 child: Text('예약취소'),

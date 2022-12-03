@@ -30,7 +30,7 @@ class ReservationPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("예약 정보 입력",
-            style: TextStyle(fontSize: 25.0))
+            style: TextStyle(fontSize: 35.0))
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -39,9 +39,9 @@ class ReservationPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 10.0,),
-            const Text("이름",
+            const Text("이름 (name)",
                style: TextStyle(
-                 fontSize: 15.0
+                 fontSize: 25.0
                ),
             ),
             TextField(
@@ -52,12 +52,12 @@ class ReservationPage extends StatelessWidget {
                 border: OutlineInputBorder(),
                 hintText: "홍길동",
               ),
-              style: const TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20.0),
             ),
             const SizedBox(height: 10.0,),
-            const Text("학번",
+            const Text("학번 (Student ID)",
               style: TextStyle(
-                  fontSize: 15.0
+                  fontSize: 25.0
               ),
             ),
             TextField(
@@ -68,12 +68,12 @@ class ReservationPage extends StatelessWidget {
                   border: OutlineInputBorder(),
                   hintText: "2022000000"
                 ),
-              style: const TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20.0),
             ),
             const SizedBox(height: 10.0,),
-            const Text("연락처",
+            const Text("연락처 (Phone Number)",
               style: TextStyle(
-                  fontSize: 15.0
+                  fontSize: 25.0
               ),
             ),
             TextField(
@@ -84,47 +84,27 @@ class ReservationPage extends StatelessWidget {
                   border: OutlineInputBorder(),
                   hintText: "01012345678",
                 ),
-              style: const TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20.0),
             ),
             const SizedBox(height: 10.0,),
-            const Text("대여 목적",
+            const Text("대여 목적 (Usage Purpose)",
               style: TextStyle(
-                  fontSize: 15.0
+                  fontSize: 25.0
               ),
             ),
             TextField(
-              onChanged: (text) {
-                RESERVATION_DATA.purpose = text;
-              },
+              onChanged: (text) {RESERVATION_DATA.purpose = text;},
               decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "ex) 조별과제 스터디, 세미나, 랩 미팅",
               ),
-              style: const TextStyle(fontSize: 20),
-              maxLines: 5,
+              style: const TextStyle(fontSize: 20.0),
+              maxLines: 5
             ),
-            /*DropdownButton(
-              value: _selectedValue
-              items: _valueList.map(
-                  (value) {
-                    return DropdownMenuItem(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }
-                ).toList(),
-                onChanged: (value) {
-                  setState() {
-                  value = value;
-                  });
-                },
-
-            ),*/
             const SizedBox(height: 10.0,),
-            const Text("소속",
-              style: TextStyle(
-                  fontSize: 15.0
-              ),
+            const Text("소속 (major)",
+              style: TextStyle(fontSize: 25.0),
+              maxLines: 5,
             ),
             TextField(
               onChanged: (text) {
@@ -134,12 +114,13 @@ class ReservationPage extends StatelessWidget {
                 border: OutlineInputBorder(),
                 hintText: "ex) 유전생명공학과, 작물시스템유전학실험실",
               ),
-              style: const TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20.0),
+              maxLines: 2,
             ),
             const SizedBox(height: 10.0,),
-            const Text("비밀번호",
+            const Text("비밀번호 (Password)",
               style: TextStyle(
-                  fontSize: 15.0
+                  fontSize: 25.0
               ),
             ),
             TextField(
@@ -151,14 +132,15 @@ class ReservationPage extends StatelessWidget {
                 border: OutlineInputBorder(),
                 //hintText: "비밀번호",
               ),
-              style: const TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20.0),
             ),
-            const SizedBox(height: 35.0,),
+            const SizedBox(height: 25.0,),
             Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly, // 같은 간격만큼 공간을 둠
             children: [
               ElevatedButton(
                 onPressed: () async {
+
                   var data = {
                     "month" : this.month,
                     "date" : this.date,
@@ -175,10 +157,27 @@ class ReservationPage extends StatelessWidget {
                       headers: {"Content-Type": "application/json"},
                       body: body
                   );
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const DateSelectionPage())
-                  );//날짜 선택 페이지로
+                  showDialog(
+                      context: context,
+                      barrierDismissible: true, // 바깥 영역 터치시 닫을지 여부
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          content: Text("예약되었습니다."),
+                          insetPadding: const  EdgeInsets.fromLTRB(0,80,0, 80),
+                          actions: [
+                            TextButton(
+                              child: const Text('확인'),
+                              onPressed: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context)
+                                    => const DateSelectionPage()));//날짜 선택 페이지로
+                              },
+                            ),
+                          ],
+                        );
+                      }
+                  );
+
                 },
 
                 child: Text('예약하기'),
