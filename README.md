@@ -5,6 +5,7 @@
     - 프론트엔드: flutter + android studio
     - 백엔드: Nodejs + visual studio code
     - 협업툴: SourceTree
+- 개발기간: 22'10'01 ~ 22'12'03
 - 팀원
     - [윤태웅](https://github.com/yuntaewoong) -개발총괄, NodeJs백엔드 개발
     - [박상준](https://github.com/Sangjun-Park-BioInfo) -Flutter 프론트엔드 개발, 예약신청 페이지, 예약 삭제 페이지, 시간선택 페이지 담당
