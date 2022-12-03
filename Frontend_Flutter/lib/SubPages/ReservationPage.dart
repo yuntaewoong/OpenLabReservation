@@ -153,7 +153,7 @@ class ReservationPage extends StatelessWidget {
                     "password" : RESERVATION_DATA.password
                   };
                   var body = json.encode(data);
-                  http.Response res = await http.post(Uri.parse("http://10.0.2.2:3000/"),
+                  http.Response res = await http.post(Uri.parse("http://ec2-3-35-4-123.ap-northeast-2.compute.amazonaws.com:1666/"),
                       headers: {"Content-Type": "application/json"},
                       body: body
                   );

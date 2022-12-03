@@ -16,7 +16,7 @@ class CancelPage extends StatelessWidget {
 
   Future FetchReservation(int month,int date,int time) async{//fetch함수 : get함수 호출후 결과를 비동기로 받겠다
     var res = await http.get(Uri.parse(
-        "http://10.0.2.2:3000/info/" +
+        "http://ec2-3-35-4-123.ap-northeast-2.compute.amazonaws.com:1666/info/" +
             month.toString() + "/" +
             date.toString() + "/" +
             time.toString()
@@ -122,7 +122,7 @@ class CancelPage extends StatelessWidget {
                                       var body = json.encode(data);
                                       http.Response res = await http.post(
                                           Uri.parse(
-                                              "http://10.0.2.2:3000/delete"),
+                                              "http://ec2-3-35-4-123.ap-northeast-2.compute.amazonaws.com:1666/delete"),
                                           headers: {
                                             "Content-Type": "application/json"
                                           },

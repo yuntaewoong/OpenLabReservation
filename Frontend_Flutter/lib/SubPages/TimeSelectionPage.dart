@@ -16,7 +16,7 @@ class TimeSelectionPage extends StatelessWidget {
 
   Future FetchReservation(int month,int date,int time) async{//fetch함수 : get함수 호출후 결과를 비동기로 받겠다
     var res = await http.get(Uri.parse(
-        "http://10.0.2.2:3000/" +
+        "http://ec2-3-35-4-123.ap-northeast-2.compute.amazonaws.com:1666/" +
         month.toString() + "/" +
         date.toString() + "/" +
         time.toString()
