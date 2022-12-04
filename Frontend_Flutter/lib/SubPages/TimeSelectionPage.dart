@@ -45,23 +45,23 @@ class TimeSelectionPage extends StatelessWidget {
                   tileColor: snap.data == "true" ? Colors.red : Colors.green,
                   trailing: Icon(Icons.navigate_next, size: 40,),
                   onTap: () {
-                    if (snap.data != "true") {
-                      Navigator.push(
+                      if (snap.data != "true") {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ReservationPage(this.month,this.date,i)
+                            )
+                        ); // MaterialPageRoute
+                      }
+                      else {
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ReservationPage(this.month,this.date,i)
+                            builder: (context) => CancelPage(this.month,this.date,i)
                           )
-                      ); // MaterialPageRoute
-                    }
-                    else {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CancelPage(this.month,this.date,i)
-                        )
-                      );
-                    }
-                  } // onTap
+                        );
+                      }
+                    }// onTap
               );
             }
           ) ,
@@ -76,19 +76,43 @@ class TimeSelectionPage extends StatelessWidget {
                     tileColor: snap.data == "true" ? Colors.red : Colors.green,
                     trailing: Icon(Icons.navigate_next, size: 40,),
                     onTap: () {
-                      if (snap.data != "true") {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ReservationPage(this.month,this.date,i))
-                        ); // MaterialPageRoute
-                      }
-                      else {
-                        Navigator.push(
-                            context,
-                          MaterialPageRoute(builder: (context) => CancelPage(this.month,this.date,i))
+                      if(this.month == 12 && this.date ==8 && (i == 15 || i ==11)) {
+                        showDialog(
+                            context: context,
+                            barrierDismissible: true, // 바깥 영역 터치시 닫을지 여부
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                content: Text("4시간 연속 예약은 불가능합니다."),
+                                insetPadding: const  EdgeInsets.fromLTRB(0,80,0, 80),
+                                actions: [
+                                  TextButton(
+                                    child: const Text('확인'),
+                                    onPressed: () {
+                                      Navigator.push(context,
+                                          MaterialPageRoute(builder: (context)
+                                          => const DateSelectionPage()));
+                                    },
+                                  ),
+                                ],
+                              );
+                            }
                         );
-                      };
+                      }
+                      else{
+                        if (snap.data != "true") {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ReservationPage(this.month,this.date,i))
+                          ); // MaterialPageRoute
+                        }
+                        else {
+                          Navigator.push(
+                              context,
+                            MaterialPageRoute(builder: (context) => CancelPage(this.month,this.date,i))
+                          );
+                        };
+                      }
                     } // onTaP
                 );
               }
