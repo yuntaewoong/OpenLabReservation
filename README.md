@@ -12,7 +12,7 @@
     - [견강혁](https://github.com/justinkhun) -Flutter 프론트엔드 개발, 메인 페이지, 달력페이지 담당
 
 # Install
-apk link: [download](https://drive.google.com/file/d/17UfBL5fSorotuDky0_c_o7sV79ZmEtK_/view?usp=sharing)  
+apk link: [download](https://drive.google.com/file/d/1RNZvojPzrW7XcVLccaCmidCb9pfDdlk6/view?usp=sharing)  
 manually build: 
 ```
 1. Backend/main.js 실행 -> 'node main.js'
