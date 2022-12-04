@@ -29,10 +29,18 @@ class CancelPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: const Text("예약 확인",
-                style: TextStyle(fontSize: 35.0))
+            title: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: const [
+                Text("예약 정보 확인",
+                    style: TextStyle(fontSize: 25.0)
+                ),
+                Text("(Verify reservation)",
+                    style: TextStyle(fontSize: 20.0)
+                ),
+              ],
+            )
         ),
-
         body: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child:FutureBuilder(
@@ -45,51 +53,53 @@ class CancelPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const SizedBox(height: 20.0,),
-                        const Text("이름 (Name)",
+                        const Text(" 이름 (Name)",
                           style: TextStyle(
                               fontSize: 25.0
                           ),
                         ),
                         const SizedBox(height: 20.0,),
-                        Text(snap.data["name"].replaceRange(1, 2, '*' * 1),
+                        Text("  " + snap.data["name"].replaceRange(1, 2,
+                            '*' * 1),
                           style: const TextStyle(
                             fontSize: 20.0,
                           ),
 
                         ),
                         const SizedBox(height: 20.0,),
-                        const Text("학번 (Student ID)",
+                        const Text(" 학번 (Student ID)",
                           style: TextStyle(
                               fontSize: 25.0
                           ),
                         ),
                         const SizedBox(height: 20.0,),
-                        Text(snap.data["id"].toString().replaceRange(4, 8, '*' * 4),
+                        Text("  " +snap.data["id"].toString().replaceRange(4,
+                            8, '*' * 4),
                           style: const TextStyle(
                               fontSize: 20.0),
                         ),
                         const SizedBox(height: 20.0,),
-                        const Text("연락처 (Phone Number)",
+                        const Text(" 연락처 (Phone Number)",
                           style: TextStyle(
                               fontSize: 25.0
                           ),
                         ),
                         const SizedBox(height: 20.0,),
-                        Text("0" + snap.data["phoneNumber"].toString().replaceRange(3, 7, '*' * 4),
+                        Text("  " + "0" + snap.data["phoneNumber"].toString().replaceRange(3, 7, '*' * 4),
                           style: const TextStyle(fontSize: 20),
                         ),
                         const SizedBox(height: 20.0,),
-                        const Text("소속 (Major)",
+                        const Text(" 소속 (Major)",
                           style: TextStyle(
                               fontSize: 25.0
                           ),
                         ),
                         const SizedBox(height: 20.0,),
-                        Text(snap.data["major"],
+                        Text("  " + snap.data["major"],
                           style: const TextStyle(fontSize: 20),
                         ),
                         const SizedBox(height: 25.0,),
-                        const Text("비밀번호 (Password)",
+                        const Text(" 비밀번호 (Password)",
                           style: TextStyle(
                               fontSize: 20.0
                           ),
@@ -133,7 +143,7 @@ class CancelPage extends StatelessWidget {
                                           barrierDismissible: true, // 바깥 영역 터치시 닫을지 여부
                                           builder: (BuildContext context) {
                                             return AlertDialog(
-                                              content: Text("예약이 취소되었습니다."),
+                                              content: Text("예약이 취소되었습니다.\nReservation canceled."),
                                               insetPadding: const  EdgeInsets.fromLTRB(0,80,0, 80),
                                               actions: [
                                                 TextButton(
@@ -152,7 +162,17 @@ class CancelPage extends StatelessWidget {
 
                                     }//
                                 },
-                                child: Text('예약취소'),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text("예약취소",
+                                        style: TextStyle(fontSize: 40.0)
+                                    ),
+                                    const Text("(Cancel reservation)",
+                                        style: TextStyle(fontSize: 20.0)
+                                    ),
+                                  ],
+                                ),
                                 //ElevatedButton 은 backgroundColor 속성이 없다.
                                 //ElevatedButton 에서는 primary 속성이 배경색을 담당한다.
                                 style: ElevatedButton.styleFrom(
@@ -173,7 +193,17 @@ class CancelPage extends StatelessWidget {
                                 onPressed: () { // 버튼 클릭시 실행되는 함수
                                   Navigator.pop(context);
                                 },
-                                child: Text('돌아가기'),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text("돌아가기",
+                                        style: TextStyle(fontSize: 40.0)
+                                    ),
+                                    const Text("(Go backward)",
+                                        style: TextStyle(fontSize: 20.0)
+                                    ),
+                                  ],
+                                ),
                                 //ElevatedButton 은 backgroundColor 속성이 없다.
                                 //ElevatedButton 에서는 primary 속성이 배경색을 담당한다.
                                 style: ElevatedButton.styleFrom(
@@ -192,6 +222,7 @@ class CancelPage extends StatelessWidget {
                               ),
                             ]
                         ),
+                        const SizedBox(height: 20.0),
                       ]
                   );
                 }

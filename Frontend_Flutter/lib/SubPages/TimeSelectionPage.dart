@@ -27,8 +27,17 @@ class TimeSelectionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("시간대 선택 (Select time)",
-            style: TextStyle(fontSize: 25.0)),
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: const [
+            Text("시간 선택",
+                style: TextStyle(fontSize: 25.0)
+            ),
+            Text("(Select time)",
+                style: TextStyle(fontSize: 20.0)
+            ),
+          ],
+        ),
         actions: <Widget>[]
       ),
       body: ListView(
