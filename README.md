@@ -10,6 +10,9 @@
     - [윤태웅](https://github.com/yuntaewoong) -개발총괄, NodeJs백엔드 개발
     - [박상준](https://github.com/Sangjun-Park-BioInfo) -Flutter 프론트엔드 개발, 예약신청 페이지, 예약 삭제 페이지, 시간선택 페이지 담당
     - [견강혁](https://github.com/justinkhun) -Flutter 프론트엔드 개발, 메인 페이지, 달력페이지 담당
+- PPT
+    - [중간발표](PresentationPPT/Midterm.pptx)
+    - [기말발표](PresentationPPT/Final.pptx)
 
 # Install
 apk link: [download](https://drive.google.com/file/d/1RNZvojPzrW7XcVLccaCmidCb9pfDdlk6/view?usp=sharing)  
