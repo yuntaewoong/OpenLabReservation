@@ -13,6 +13,7 @@
 - PPT
     - [중간발표](PresentationPPT/Midterm.pptx)
     - [기말발표](PresentationPPT/Final.pptx)
+- [YOUTUBE](https://www.youtube.com/watch?v=9HaRiQkHO-k)
 
 # Install
 apk link: [download](https://drive.google.com/file/d/1RNZvojPzrW7XcVLccaCmidCb9pfDdlk6/view?usp=sharing)  
